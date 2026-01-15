@@ -869,11 +869,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/muharremyildiz/Projects/DapperLite/PulseORM.Core/PulseORM.Core.csproj",
+      "projectUniqueName": "/Users/muharremyildiz/Projects/PulseORMV1/PulseORM/PulseORM.Core/PulseORM.Core.csproj",
       "projectName": "PulseORM.Core",
-      "projectPath": "/Users/muharremyildiz/Projects/DapperLite/PulseORM.Core/PulseORM.Core.csproj",
+      "projectPath": "/Users/muharremyildiz/Projects/PulseORMV1/PulseORM/PulseORM.Core/PulseORM.Core.csproj",
       "packagesPath": "/Users/muharremyildiz/.nuget/packages/",
-      "outputPath": "/Users/muharremyildiz/Projects/DapperLite/PulseORM.Core/obj/",
+      "outputPath": "/Users/muharremyildiz/Projects/PulseORMV1/PulseORM/PulseORM.Core/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/muharremyildiz/.nuget/NuGet/NuGet.Config"

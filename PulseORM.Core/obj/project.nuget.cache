@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "woE5T/RPk8k=",
+  "dgSpecHash": "ihvXR/SIv00=",
   "success": true,
-  "projectFilePath": "/Users/muharremyildiz/Projects/DapperLite/PulseORM.Core/PulseORM.Core.csproj",
+  "projectFilePath": "/Users/muharremyildiz/Projects/PulseORMV1/PulseORM/PulseORM.Core/PulseORM.Core.csproj",
   "expectedPackageFiles": [
     "/Users/muharremyildiz/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "/Users/muharremyildiz/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",

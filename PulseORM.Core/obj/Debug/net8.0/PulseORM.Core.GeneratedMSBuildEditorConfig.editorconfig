@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PulseORM.Core
-build_property.ProjectDir = /Users/muharremyildiz/Projects/DapperLite/PulseORM.Core/
+build_property.ProjectDir = /Users/muharremyildiz/Projects/PulseORMV1/PulseORM/PulseORM.Core/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
