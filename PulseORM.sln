@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseORM.Core", "PulseORM.Core\PulseORM.Core.csproj", "{CCB1A9D1-6041-4F78-A34F-93D22920C887}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseORM.DemoDataLayer", "PulseORM.DemoDataLayer\PulseORM.DemoDataLayer.csproj", "{53CFB28D-7AA2-4F9F-A758-A7271FEFF634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseORM.Service", "PulseORM.Service\PulseORM.Service.csproj", "{DD09546C-0507-4705-9E55-670210C497EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCB1A9D1-6041-4F78-A34F-93D22920C887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB1A9D1-6041-4F78-A34F-93D22920C887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB1A9D1-6041-4F78-A34F-93D22920C887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB1A9D1-6041-4F78-A34F-93D22920C887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53CFB28D-7AA2-4F9F-A758-A7271FEFF634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53CFB28D-7AA2-4F9F-A758-A7271FEFF634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53CFB28D-7AA2-4F9F-A758-A7271FEFF634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53CFB28D-7AA2-4F9F-A758-A7271FEFF634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD09546C-0507-4705-9E55-670210C497EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD09546C-0507-4705-9E55-670210C497EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD09546C-0507-4705-9E55-670210C497EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD09546C-0507-4705-9E55-670210C497EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
