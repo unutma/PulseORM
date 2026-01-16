@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PulseORM.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+633cd2221c7f63a25d2b8d40207c934a7a17a6b5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a67c30e2611613104027a57653d15eb9d7dcc605")]
 [assembly: System.Reflection.AssemblyProductAttribute("PulseORM.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PulseORM.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
