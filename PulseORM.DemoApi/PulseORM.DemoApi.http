@@ -1,0 +1,6 @@
+@PulseORM.DemoApi_HostAddress = http://localhost:5191
+
+GET {{PulseORM.DemoApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
