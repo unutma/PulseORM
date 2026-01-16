@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PulseORM.DemoDataLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7163b4a998d73fb1bdd27394b1d7e3fddc17286e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+633cd2221c7f63a25d2b8d40207c934a7a17a6b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("PulseORM.DemoDataLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PulseORM.DemoDataLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

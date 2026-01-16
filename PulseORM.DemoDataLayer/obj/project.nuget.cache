@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "MuLaYkL5vB4=",
+  "dgSpecHash": "44iV2gDe6J8=",
   "success": true,
   "projectFilePath": "/Users/muharremyildiz/Projects/PulseORMV1/PulseORM/PulseORM.DemoDataLayer/PulseORM.DemoDataLayer.csproj",
   "expectedPackageFiles": [
+    "/Users/muharremyildiz/.nuget/packages/microsoft.extensions.configuration/10.0.2/microsoft.extensions.configuration.10.0.2.nupkg.sha512",
+    "/Users/muharremyildiz/.nuget/packages/microsoft.extensions.configuration.abstractions/10.0.2/microsoft.extensions.configuration.abstractions.10.0.2.nupkg.sha512",
     "/Users/muharremyildiz/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "/Users/muharremyildiz/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "/Users/muharremyildiz/.nuget/packages/microsoft.extensions.primitives/10.0.2/microsoft.extensions.primitives.10.0.2.nupkg.sha512",
     "/Users/muharremyildiz/.nuget/packages/npgsql/10.0.0/npgsql.10.0.0.nupkg.sha512",
     "/Users/muharremyildiz/.nuget/packages/oracle.manageddataaccess.core/23.26.0/oracle.manageddataaccess.core.23.26.0.nupkg.sha512",
     "/Users/muharremyildiz/.nuget/packages/runtime.native.system.data.sqlclient.sni/4.4.0/runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
