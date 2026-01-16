@@ -20,6 +20,7 @@ public partial class PulseLiteDb
         return new SqlQuery<T>(this, sql, parameters);
     }
 
+    
 
     public PulseQueryJoin<T> QueryJoin<T>() where T : new()
         => new PulseQueryJoin<T>(this);
