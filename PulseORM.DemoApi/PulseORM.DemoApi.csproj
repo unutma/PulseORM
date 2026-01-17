@@ -16,4 +16,9 @@
       <Folder Include="Controllers\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\PulseORM.DemoDataLayer\PulseORM.DemoDataLayer.csproj" />
+      <ProjectReference Include="..\PulseORM.DemoService\PulseORM.DemoService.csproj" />
+    </ItemGroup>
+
 </Project>

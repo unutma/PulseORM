@@ -1,13 +1,14 @@
 using PulseORM.Core;
 using PulseORM.Core.Sql;
+using PulseORM.DemoDataLayer;
 
 public sealed class AppDb : IAppDb
 {
     private readonly PulseLiteDb _db;
 
-    public AppDb(PulseLiteDb db)
+    public AppDb(IPulseDbContext context)
     {
-        _db = db;
+        _db = context.Db;
     }
 
     public Query<T> Query<T>() where T : new() => _db.Query<T>();

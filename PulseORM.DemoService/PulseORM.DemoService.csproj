@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\PulseORM.DemoDataLayer\PulseORM.DemoDataLayer.csproj" />
+    </ItemGroup>
+
 </Project>
