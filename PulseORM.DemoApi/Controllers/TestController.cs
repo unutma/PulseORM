@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PulseORM.DemoDataLayer.Tables;
+using PulseORM.DemoService;
 
 namespace PulseORM.DemoApi.Controllers
 {
@@ -7,10 +9,15 @@ namespace PulseORM.DemoApi.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult Get()
+        private readonly ICompanyService _companyService;
+        public TestController(ICompanyService companyService)
         {
-            return Ok("Hello World!");
+            _companyService = companyService;
+        }
+        [HttpGet("Test")]
+        public async Task<IEnumerable<Company>> Get()
+        {
+            return await _companyService.GetCompanies();
         }
 
     }
