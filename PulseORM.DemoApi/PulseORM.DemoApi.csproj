@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\PulseORM.DemoDataLayer\PulseORM.DemoDataLayer.csproj" />
+      <ProjectReference Include="..\PulseORM.DemoEntities\PulseORM.DemoEntities.csproj" />
       <ProjectReference Include="..\PulseORM.DemoService\PulseORM.DemoService.csproj" />
     </ItemGroup>
 

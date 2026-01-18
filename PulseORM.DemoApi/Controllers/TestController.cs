@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PulseORM.DemoDataLayer.Tables;
+using PulseORM.DemoEntities.Tables;
 using PulseORM.DemoService;
 
 namespace PulseORM.DemoApi.Controllers

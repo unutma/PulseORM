@@ -1,4 +1,4 @@
-using PulseORM.DemoDataLayer;
+using PulseORM.DemoEntities.Tables;
 
 namespace PulseORM.DemoService;
 

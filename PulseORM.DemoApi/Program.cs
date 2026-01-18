@@ -1,5 +1,4 @@
 using PulseORM.DemoDataLayer;
-using PulseORM.DemoDataLayer.Tables;
 using PulseORM.DemoService;
 
 var builder = WebApplication.CreateBuilder(args);
