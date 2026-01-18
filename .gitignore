@@ -1,3 +1,6 @@
+*.DotSettings
+*.DotSettings.user
+
 # JetBrains / Rider
 .idea/
 **/.idea/
