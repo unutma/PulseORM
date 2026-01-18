@@ -1,7 +1,13 @@
+# JetBrains / Rider
 .idea/
 **/.idea/
-bin/
-obj/
-/packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+# .NET build outputs
+**/bin/
+**/obj/
+packages/
+
+# macOS
+.DS_Store
