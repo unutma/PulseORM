@@ -224,7 +224,9 @@ internal sealed class WhereBuilder
 {
     if (TryBuildEqualsIgnoreCase(mc, ctx, out var sql))
         return sql;
-
+    if (TryBuildStringLike(mc, ctx, out  sql))
+        return sql;
+    
     throw new NotSupportedException();
 }
 
@@ -352,5 +354,53 @@ private static void EnsureDirectParameterAccess(MemberExpression member)
     if (inner is not ParameterExpression)
         throw new NotSupportedException();
 }
+
+private static bool TryBuildStringLike(MethodCallExpression mc, Context ctx, out string sql)
+{
+    sql = string.Empty;
+
+    if (mc.Method.DeclaringType != typeof(string))
+        return false;
+
+    var method = mc.Method.Name;
+
+    if (method != nameof(string.Contains) &&
+        method != nameof(string.StartsWith) &&
+        method != nameof(string.EndsWith))
+        return false;
+
+    if (mc.Arguments.Count != 1)
+        return false;
+
+    if (mc.Object is null)
+        return false;
+
+    var left = StripConvert(mc.Object);
+    var right = StripConvert(mc.Arguments[0]);
+
+    if (left is not MemberExpression leftMember || leftMember.Type != typeof(string))
+        return false;
+
+    EnsureDirectParameterAccess(leftMember);
+
+    var leftSql = ResolveColumn(leftMember, ctx);
+
+    var valueObj = Evaluate(right);
+    if (valueObj is null)
+        return false;
+
+    var pattern = method switch
+    {
+        nameof(string.Contains) => $"%{valueObj}%",
+        nameof(string.StartsWith) => $"{valueObj}%",
+        nameof(string.EndsWith) => $"%{valueObj}",
+        _ => throw new NotSupportedException()
+    };
+
+    var paramSql = ctx.AddParam(pattern);
+    sql = ctx.Dialect.LikeIgnoreCase(leftSql, paramSql);
+    return true;
+}
+
 
 }

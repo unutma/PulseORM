@@ -10,7 +10,7 @@ public interface ISqlDialect
         string orderBySql);
     string BoolLiteral(bool value);
     string EqualsIgnoreCase(string leftSql, string rightSql);
-    string LikeEscapeClause();
+    string LikeIgnoreCase(string leftSql, string rightSql);
 
 
 }

@@ -17,10 +17,8 @@ public sealed class PostgresDialect : ISqlDialect
     public string EqualsIgnoreCase(string leftSql, string rightSql)
         => $"({leftSql} ILIKE {rightSql})";
 
-    public string LikeEscapeClause()
-    {
-        throw new NotImplementedException();
-    }
+    public string LikeIgnoreCase(string leftSql, string rightSql)
+        => $"({leftSql} ILIKE {rightSql})";
 }
 
 
@@ -41,10 +39,8 @@ public sealed class OracleDialect  : ISqlDialect
     public string EqualsIgnoreCase(string leftSql, string rightSql)
         => $"(UPPER({leftSql}) = UPPER({rightSql}))";
 
-    public string LikeEscapeClause()
-    {
-        throw new NotImplementedException();
-    }
+    public string LikeIgnoreCase(string leftSql, string rightSql)
+        => $"({leftSql} LIKE {rightSql})";
 }
 
 public sealed class SqlServerDialect : ISqlDialect
@@ -63,8 +59,7 @@ public sealed class SqlServerDialect : ISqlDialect
     public string EqualsIgnoreCase(string leftSql, string rightSql)
         => $"(UPPER({leftSql}) = UPPER({rightSql}))";
 
-    public string LikeEscapeClause()
-    {
-        throw new NotImplementedException();
-    }
+    public string LikeIgnoreCase(string leftSql, string rightSql)
+        => $"({leftSql} LIKE {rightSql})";
+
 }

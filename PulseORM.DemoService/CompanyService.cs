@@ -26,11 +26,17 @@ public class CompanyService : ICompanyService
     {
         Expression<Func<Company, bool>> where = s => true;
 
-        if (filter.Company is not null)
+        if (filter.Company?.CompanyId > 0)
         {
-            where =  s => s.CompanyId > filter.Company.CompanyId;
+            // where =  s => s.CompanyId > filter.Company.CompanyId;
         }
-
+        
+        if (filter.Company?.CompanyName is not null)
+        {
+            // where =  s => s.CompanyName.StartsWith(filter.Company.CompanyName);
+            // where =  s => s.CompanyName.Contains(filter.Company.CompanyName);
+            where =  s => s.CompanyName.EndsWith(filter.Company.CompanyName);
+        }
        
 
         var (companies, totalCount) = await _appDb.GetAllPagedAsync<Company>(
