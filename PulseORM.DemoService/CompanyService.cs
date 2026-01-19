@@ -24,12 +24,23 @@ public class CompanyService : ICompanyService
     }
     public async Task<(IEnumerable<Company> Companies, long TotalCount)> GetCompaniesFilterPagination(CompanyPagination filter)
     {
+        Expression<Func<Company, bool>> where = s => true;
+
+        if (filter.Company is not null)
+        {
+            where =  s => s.CompanyId > filter.Company.CompanyId;
+        }
+
+       
+
         var (companies, totalCount) = await _appDb.GetAllPagedAsync<Company>(
-            filter.Page, filter.PageSize,
+            filter.Page,
+            filter.PageSize,
             s => s.CompanyId,
             true,
-            whereInclude: s => s.CompanyId > filter.Company.CompanyId
+            whereInclude: where
         );
+
 
         return (companies, totalCount);
     }
