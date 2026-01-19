@@ -180,7 +180,6 @@ public partial class PulseLiteDb
     }
     
     public async Task<(List<T> Items, long TotalCount)> GetAllPagedAsync<T>(
-        ISqlDialect _dialect,
         int page,
         int pageSize,
         Expression<Func<T, object>>? orderBy,
@@ -190,26 +189,18 @@ public partial class PulseLiteDb
     {
         var map = ModelMapper.GetMap<T>();
         var sql = $"SELECT * FROM {map.TableName}";
+        var countSql = $"SELECT COUNT(*) FROM {map.TableName}";
         var parameters = new Dictionary<string, object?>();
 
-        var countSql = $"SELECT COUNT(*) FROM {map.TableName}";
         if (whereInclude is not null)
         {
             var where = WhereBuilder.Build(whereInclude, map, _dialect);
 
             if (!string.IsNullOrWhiteSpace(where.Sql))
-                countSql += " WHERE " + where.Sql;
-
-            foreach (var kv in where.Parameters)
-                parameters[kv.Key] = kv.Value;
-        }
-
-        if (whereInclude is not null)
-        {
-            var where = WhereBuilder.Build(whereInclude, map, _dialect);
-
-            if (!string.IsNullOrWhiteSpace(where.Sql))
+            {
                 sql += " WHERE " + where.Sql;
+                countSql += " WHERE " + where.Sql;
+            }
 
             foreach (var kv in where.Parameters)
                 parameters[kv.Key] = kv.Value;
@@ -218,8 +209,11 @@ public partial class PulseLiteDb
         var totalCount = await QueryCountAsync(countSql, parameters);
         var orderBySql = OrderByBuilder.Build(orderBy, map, descending);
 
-        return (await QueryPagedAsync<T>(sql, parameters, page, pageSize, orderBySql), totalCount);
+        var items = await QueryPagedAsync<T>(sql, parameters, page, pageSize, orderBySql);
+
+        return (items, totalCount);
     }
+
     
     internal Task<long> QueryCountSqlAsync(
         string sql,
