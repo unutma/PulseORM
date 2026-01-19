@@ -19,6 +19,13 @@ namespace PulseORM.DemoApi.Controllers
         {
             return await _companyService.GetCompanies();
         }
+        
+        [HttpGet("Filter")]
+        
+        public async Task<IEnumerable<Company>> Filter([FromQuery] Company filter)
+        {
+            return await _companyService.GetCompaniesFilter(filter);
+        }
 
     }
 }

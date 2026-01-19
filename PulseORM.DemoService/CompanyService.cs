@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+using PulseORM.Core;
 using PulseORM.DemoEntities.Tables;
 
 namespace PulseORM.DemoService;
@@ -13,5 +15,10 @@ public class CompanyService : ICompanyService
     public async Task<IList<Company>> GetCompanies()
     {
         return await _appDb.GetAllAsync<Company>();
+    }
+
+    public async Task<IEnumerable<Company>> GetCompaniesFilter(Company filter)
+    {
+        return  await _appDb.Query<Company>().FilterSql(s=>s.CompanyId > filter.CompanyId).ToListAsync();
     }
 }
