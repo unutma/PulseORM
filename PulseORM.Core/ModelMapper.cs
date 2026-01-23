@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Collections.Concurrent;
+using PulseORM.Core.Helper;
 
 namespace PulseORM.Core;
 
@@ -50,19 +51,24 @@ public static class ModelMapper
             .ToList();
 
         var propertyDict = propertyMaps
-            .ToDictionary(p => p.PropertyInfo.Name, p => p);
+            .ToDictionary(p => p.PropertyInfo.Name, p => p, StringComparer.OrdinalIgnoreCase);
 
-        var keyProp = props.FirstOrDefault(p => p.GetCustomAttribute<KeyAttribute>() != null);
+
+        var keyProp = KeyDiscovery.FindKeyProperty(t);
 
         PropertyMap? keyMap = null;
         if (keyProp is not null)
         {
+            var keyColAttr = keyProp.GetCustomAttribute<ColumnAttribute>();
+            var keyColName = keyColAttr?.Name ?? keyProp.Name;
+
             keyMap = new PropertyMap
             {
-                ColumnName = keyProp.GetCustomAttribute<ColumnAttribute>()?.Name ?? keyProp.Name,
+                ColumnName = keyColName,
                 PropertyInfo = keyProp
             };
         }
+
 
         return new EntityMap
         {

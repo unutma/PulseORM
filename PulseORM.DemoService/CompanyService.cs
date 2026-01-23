@@ -20,7 +20,7 @@ public class CompanyService : ICompanyService
 
     public async Task<IEnumerable<Company>> GetCompaniesFilter(Company filter)
     {
-        return await _appDb.Query<Company>().FilterSql(s=>s.CompanyId > filter.CompanyId).ToListAsync();
+        return await _appDb.Query<Company>().FilterSql(s=>s.CompanyName.Contains(filter.CompanyName)).ToListAsync();
     }
     public async Task<(IEnumerable<Company> Companies, long TotalCount)> GetCompaniesFilterPagination(CompanyPagination filter)
     {

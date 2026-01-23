@@ -11,9 +11,11 @@ namespace PulseORM.DemoApi.Controllers
     public class TestController : ControllerBase
     {
         private readonly ICompanyService _companyService;
-        public TestController(ICompanyService companyService)
+        private readonly IUserService _userService;
+        public TestController(ICompanyService companyService, IUserService userService)
         {
             _companyService = companyService;
+            _userService = userService;
         }
         [HttpGet("Test")]
         public async Task<IEnumerable<Company>> Get()
@@ -38,7 +40,33 @@ namespace PulseORM.DemoApi.Controllers
                 TotalCount = totalCount
             });
         }
+        
+        [HttpPost("UserAdd")]
+        public async Task<Users> UserAdd([FromBody] Users user)
+        {
+            var userAdd = await _userService.UserAdd(user);
+            if (userAdd>0)
+            {
+                return user;
+            }
+            else
+            {
+                throw new Exception("UserAdd Failed");
+            }
+        }
 
-
+        [HttpPost("UserMultiAdd")]
+        public async Task<int> UserMultiAdd([FromBody] IList<Users> users)
+        {
+            var userAdd = await _userService.BulkInsertAsync(users);
+            if (userAdd > 0)
+            {
+                return userAdd;
+            }
+            else
+            {
+                throw new Exception("UserAdd Failed");
+            }
+        }
     }
 }

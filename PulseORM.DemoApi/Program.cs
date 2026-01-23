@@ -23,6 +23,7 @@ builder.Services.AddScoped<IAppDb, AppDb>();
 
 builder.Services.AddScoped<IPulseDbContext, PulseDbContext>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

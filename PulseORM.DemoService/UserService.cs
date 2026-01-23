@@ -1,0 +1,69 @@
+using PulseORM.Core;
+using PulseORM.DemoEntities.Tables;
+
+namespace PulseORM.DemoService;
+
+public class UserService : IUserService
+{
+    
+    private readonly IAppDb _appDb;
+    
+    public UserService(IAppDb appDb)
+    {
+        _appDb = appDb;
+    }
+    public async Task<int> UserAdd(Users user)
+    {
+        try
+        {
+            user.FirstName = await this.Capitalize(user.FirstName);
+            user.LastName = await this.Capitalize(user.LastName);
+            var addUser = await _appDb.InsertAsync(user);
+            return addUser;
+        }
+        catch (Exception ex)
+        {
+           throw new Exception(ex.Message);
+        }
+    }
+
+    public async Task<IEnumerable<Users>> GetAllUserAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<Users> GetUserByIdAsync(long id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<int> BulkInsertAsync(IList<Users> users)
+    {
+        foreach (var user in users)
+        {
+            user.FirstName = await this.Capitalize(user.FirstName);
+            user.LastName = await this.Capitalize(user.LastName);
+        }
+        var addUsers = await _appDb.BulkInsertAsync(users);
+        return addUsers;
+    }
+
+    public async Task<long> DeleteUserAsync(long id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<long> UpdateUserAsync(Users user)
+    {
+        throw new NotImplementedException();
+    }
+    
+    private async Task <string> Capitalize(string input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+            return input;
+        input = input.ToLower();
+        return char.ToUpper(input[0]) + input.Substring(1);
+    }
+
+}

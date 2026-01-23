@@ -131,6 +131,11 @@ public partial class PulseLiteDb
         var ps = new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
 
         var i = 0;
+        
+        var keyInfo = map.Key?.PropertyInfo;
+        if (keyInfo == null)
+            throw new InvalidOperationException(
+                $"No key mapping found for entity '{typeof(T).Name}'. Add [Key] or use 'Id' / '{typeof(T).Name}Id'.");
 
         foreach (var p in map.Properties)
         {
