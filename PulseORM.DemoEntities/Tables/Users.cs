@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace PulseORM.DemoEntities.Tables;
 
@@ -18,5 +19,6 @@ public sealed class Users
     public int CompanyId { get; set; }
     
     [NotMapped]
+    [JsonIgnore]
     public Company? Company { get; set; }
 }
