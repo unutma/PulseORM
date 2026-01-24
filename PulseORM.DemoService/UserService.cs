@@ -34,7 +34,8 @@ public class UserService : IUserService
 
     public async Task<Users> GetUserByIdAsync(long id)
     {
-        throw new NotImplementedException();
+        var user = await _appDb.GetByIdAsync<Users>(id);
+        return user;
     }
 
     public async Task<int> BulkInsertAsync(IList<Users> users)

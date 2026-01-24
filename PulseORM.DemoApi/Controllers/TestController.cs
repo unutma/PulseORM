@@ -68,5 +68,11 @@ namespace PulseORM.DemoApi.Controllers
                 throw new Exception("UserAdd Failed");
             }
         }
+        
+        [HttpGet("UserFindById")]
+        public async Task<Users> UserFindById(long id)
+        {
+            return await _userService.GetUserByIdAsync(id);
+        }
     }
 }
