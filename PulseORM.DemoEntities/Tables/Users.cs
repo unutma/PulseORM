@@ -19,6 +19,6 @@ public sealed class Users
     public int CompanyId { get; set; }
     
     [NotMapped]
-    [JsonIgnore]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public Company? Company { get; set; }
 }
