@@ -86,5 +86,12 @@ namespace PulseORM.DemoApi.Controllers
         {
             return await _userService.GetUsersWithCompanyAsync();
         }
+        
+        [HttpGet("TestSqlQuery")]
+        public async Task<IEnumerable<Company>> TestSqlQuery()
+        {
+            return await _companyService.TestSqlQueryAsync();
+        }
+        
     }
 }

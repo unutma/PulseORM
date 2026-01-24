@@ -50,4 +50,33 @@ public class CompanyService : ICompanyService
 
         return (companies, totalCount);
     }
+
+    public async Task<IList<Company>> TestSqlQueryAsync()
+    {
+        var testCount = this.TestSqlQueryReturnCount();
+        if (testCount.Result > 3)
+        {
+            Console.WriteLine("Success");
+        }
+        else
+        {
+            Console.WriteLine("Fail");
+        }
+        return await _appDb.SqlQuery<Company>("SELECT * FROM Company").FilterSql(s=>s.CompanyId >2).ToListAsync();
+        // return await _appDb.SqlQuery<Company>("select * from Company").ToListAsync();
+    }
+
+    private async Task<long> TestSqlQueryReturnCount()
+    {
+        var count = await  _appDb.QueryCountSqlCoreAsync("Select Count(*) from Company", null);
+        var countWithParam = await _appDb.QueryCountSqlCoreAsync(
+            "SELECT COUNT(*) FROM Company WHERE IsActive = @isActive",
+            new Dictionary<string, object?>
+            {
+                ["isActive"] = true
+            }
+        );
+
+        return count;
+    }
 }

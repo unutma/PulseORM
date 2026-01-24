@@ -10,5 +10,7 @@ public interface ICompanyService
     Task <IList<Company>> GetCompanies();
     Task <IEnumerable<Company>> GetCompaniesFilter(Company filter); 
     Task<(IEnumerable<Company> Companies, long TotalCount)> GetCompaniesFilterPagination(CompanyPagination filter);
+    
+    Task<IList<Company>> TestSqlQueryAsync();
 
 }
