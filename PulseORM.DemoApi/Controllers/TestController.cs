@@ -74,5 +74,11 @@ namespace PulseORM.DemoApi.Controllers
         {
             return await _userService.GetUserByIdAsync(id);
         }
+        
+        [HttpPut("UserUpdate")]
+        public async Task<int> UserUpdate(Users user)
+        {
+            return await _userService.UpdateUserAsync(user);
+        }
     }
 }

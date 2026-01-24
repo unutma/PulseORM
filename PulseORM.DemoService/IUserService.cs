@@ -8,6 +8,6 @@ public interface IUserService
     Task<IEnumerable<Users>> GetAllUserAsync();
     Task<Users> GetUserByIdAsync(long id);
     Task<int> BulkInsertAsync(IList<Users> users);
-    Task<long> DeleteUserAsync(long id);
-    Task<long> UpdateUserAsync(Users user);
+    Task<int> DeleteUserAsync(int id);
+    Task<int> UpdateUserAsync(Users user);
 }

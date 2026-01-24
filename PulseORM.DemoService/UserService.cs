@@ -49,14 +49,23 @@ public class UserService : IUserService
         return addUsers;
     }
 
-    public async Task<long> DeleteUserAsync(long id)
+    public async Task<int> DeleteUserAsync(int id)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<long> UpdateUserAsync(Users user)
+    public async Task<int> UpdateUserAsync(Users user)
     {
-        throw new NotImplementedException();
+        var member = await _appDb.GetByIdAsync<Users>(user.UserId);
+        if (member == null)
+            throw new Exception("User not found");
+        member.CompanyId = user.CompanyId;
+        member.FirstName = user.FirstName;
+        member.LastName = user.LastName;
+        member.Title = user.Title;
+        await _appDb.UpdateAsync(member);
+        return member.UserId;
+        
     }
     
     private async Task <string> Capitalize(string input)
