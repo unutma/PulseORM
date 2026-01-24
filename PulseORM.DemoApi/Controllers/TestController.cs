@@ -80,5 +80,11 @@ namespace PulseORM.DemoApi.Controllers
         {
             return await _userService.UpdateUserAsync(user);
         }
+        
+        [HttpGet("UserListWithCompany")]
+        public async Task<IEnumerable<Users>> UserListWithCompany()
+        {
+            return await _userService.GetUsersWithCompanyAsync();
+        }
     }
 }

@@ -1,4 +1,5 @@
 using PulseORM.Core;
+using PulseORM.DemoEntities.Dtos;
 using PulseORM.DemoEntities.Tables;
 
 namespace PulseORM.DemoService;
@@ -67,7 +68,15 @@ public class UserService : IUserService
         return member.UserId;
         
     }
-    
+
+    public async Task<IEnumerable<Users>> GetUsersWithCompanyAsync()
+    {
+        var member = await _appDb.QueryJoin<Users>().FilterSql(s => s.CompanyId == 1)
+            .IncludeOne(x => x.Company, x => x.CompanyId, c => c.CompanyId, JoinType.Inner)
+            .SortBy(x => x.CompanyId, true).ToListAsync();
+        return member.Items;
+    }
+
     private async Task <string> Capitalize(string input)
     {
         if (string.IsNullOrWhiteSpace(input))

@@ -16,4 +16,7 @@ public sealed class Users
     public string? Title { get; set; }
     
     public int CompanyId { get; set; }
+    
+    [NotMapped]
+    public Company? Company { get; set; }
 }
