@@ -4,7 +4,7 @@ internal static class LikeUtil
 {
     public const char EscapeChar = '\\';
 
-    public static string Escape(string s)
+    private static string Escape(string s)
     {
         if (string.IsNullOrEmpty(s)) return s;
         
