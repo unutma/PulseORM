@@ -71,6 +71,20 @@ public class UserService : IUserService
 
     public async Task<IEnumerable<Users>> GetUsersWithCompanyAsync()
     {
+        var (items, total) = await _appDb
+            .QueryJoin<Users>()
+            .FilterSql(x => x.UserId > 0)
+            .SortBy(x => x.UserId, descending: true)
+            .Pagination(1, 10)
+            .IncludeOne(x => x.Company, x => x.CompanyId, c => c.CompanyId, JoinType.Inner)
+            .ProjectTo(u => new UserCompanyDto
+            {
+                UserId = u.UserId,
+                UserName = u.FirstName,
+                CompanyName = u.Company.CompanyName
+            })
+            .ToListAsync<UserCompanyDto>();
+
         var member = await _appDb.QueryJoin<Users>().FilterSql(s => s.CompanyId == 1)
              .IncludeOne(x => x.Company, x => x.CompanyId, c => c.CompanyId, JoinType.Inner)
             .SortBy(x => x.CompanyId, true).Pagination(1,1).ToListAsync();
