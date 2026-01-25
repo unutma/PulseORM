@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Collections.Concurrent;
+using System.ComponentModel.DataAnnotations.Schema;
 using PulseORM.Core.Helper;
 
 namespace PulseORM.Core;
@@ -35,6 +36,8 @@ public static class ModelMapper
 
         var props = t.GetProperties(BindingFlags.Public | BindingFlags.Instance)
             .Where(p => p.CanRead && p.CanWrite)
+            .Where(p => p.GetCustomAttribute<NotMappedAttribute>() is null)
+            .Where(p => IsDbScalar(p.PropertyType)) 
             .ToList();
 
         var propertyMaps = props
@@ -78,5 +81,23 @@ public static class ModelMapper
             Properties = propertyMaps,
             PropertyByName = propertyDict
         };
+    }
+    
+    private static bool IsDbScalar(Type type)
+    {
+        type = Nullable.GetUnderlyingType(type) ?? type;
+
+        if (type.IsEnum) return true;
+        if (type.IsPrimitive) return true;
+
+        return type == typeof(string)
+               || type == typeof(decimal)
+               || type == typeof(DateTime)
+               || type == typeof(DateOnly)
+               || type == typeof(TimeOnly)
+               || type == typeof(Guid)
+               || type == typeof(byte[])
+               || type == typeof(DateTimeOffset)
+               || type == typeof(TimeSpan);
     }
 }

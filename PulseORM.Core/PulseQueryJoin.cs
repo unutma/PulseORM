@@ -245,7 +245,8 @@ public sealed class PulseQueryJoin<TRoot> where TRoot : new()
             $"t.{keyColumn}",
             idList,
             parameters);
-
+        
+        
         var sql = $"SELECT * FROM {tableName} t WHERE {inClause};";
 
         return await QueryAsyncByType(clrType, sql, parameters).ConfigureAwait(false);

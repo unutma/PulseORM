@@ -30,7 +30,7 @@ public class UserService : IUserService
 
     public async Task<IEnumerable<Users>> GetAllUserAsync()
     {
-        throw new NotImplementedException();
+        return await _appDb.GetAllAsync<Users>();
     }
 
     public async Task<Users> GetUserByIdAsync(long id)
@@ -72,7 +72,7 @@ public class UserService : IUserService
     public async Task<IEnumerable<Users>> GetUsersWithCompanyAsync()
     {
         var member = await _appDb.QueryJoin<Users>().FilterSql(s => s.CompanyId == 1)
-            .IncludeOne(x => x.Company, x => x.CompanyId, c => c.CompanyId, JoinType.Inner)
+             .IncludeOne(x => x.Company, x => x.CompanyId, c => c.CompanyId, JoinType.Inner)
             .SortBy(x => x.CompanyId, true).Pagination(1,1).ToListAsync();
         return member.Items;
     }

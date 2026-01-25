@@ -174,7 +174,8 @@ public partial class PulseLiteDb
     public Task<List<T>> GetAllAsync<T>() where T : new()
     {
         var map = ModelMapper.GetMap<T>();
-        var sql = $"SELECT * FROM {map.TableName}";
+        var select = string.Join(", ", map.Properties.Select(p => p.ColumnName));
+        var sql = $"SELECT {select} FROM {map.TableName}";
         var parameters = new Dictionary<string, object?>();
         return QueryAsync<T>(sql, parameters);
     }
@@ -188,7 +189,8 @@ public partial class PulseLiteDb
         where T : new()
     {
         var map = ModelMapper.GetMap<T>();
-        var sql = $"SELECT * FROM {map.TableName}";
+        var select = string.Join(", ", map.Properties.Select(p => p.ColumnName));
+        var sql = $"SELECT {select} FROM {map.TableName}";
         var countSql = $"SELECT COUNT(*) FROM {map.TableName}";
         var parameters = new Dictionary<string, object?>();
 

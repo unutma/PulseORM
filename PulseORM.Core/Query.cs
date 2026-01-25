@@ -30,7 +30,8 @@ public sealed class Query<T> where T : new()
 
     public Task<List<T>> ToListAsync()
 {
-    var sql = $"SELECT * FROM {_map.TableName} t";
+    var select = SqlBuilder.BuildRootSelectList(_map, "t");
+    var sql = $"SELECT {select} FROM {_map.TableName} t";
 
     var where = WhereBuilder.Build<T>(_where, _map, _dialect, "t", 0);
     if (!string.IsNullOrWhiteSpace(where.Sql))

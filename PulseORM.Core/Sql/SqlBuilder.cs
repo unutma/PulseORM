@@ -68,7 +68,9 @@ internal static class SqlBuilder
     {
         var parameters = new Dictionary<string, object?>();
 
-        var sql = $"SELECT * FROM {rootMap.TableName} r";
+        var select = BuildRootSelectList(rootMap, "r");
+        var sql = $"SELECT {select} FROM {rootMap.TableName} r";
+
 
         var whereSql = "";
         if (where is not null)
@@ -98,8 +100,11 @@ internal static class SqlBuilder
         where TRoot : new()
     {
         if (keys.Count == 0)
-            return ("SELECT * FROM " + rootMap.TableName + " r WHERE 1=0", new Dictionary<string, object?>());
-
+        {
+            var emptySelect = BuildRootSelectList(rootMap, "r");
+            return ($"SELECT {emptySelect} FROM {rootMap.TableName} r WHERE 1=0", new Dictionary<string, object?>());
+        }
+        
         var keyCol = rootMap.Key?.ColumnName;
         if (string.IsNullOrWhiteSpace(keyCol))
             throw new InvalidOperationException(
@@ -108,7 +113,9 @@ internal static class SqlBuilder
         var parameters = new Dictionary<string, object?>();
         var inClause = AppendInClause(dialect, $"r.{keyCol}", keys.ToList(), parameters);
 
-        var sql = $"SELECT * FROM {rootMap.TableName} r WHERE {inClause}";
+        var select = BuildRootSelectList(rootMap, "r");
+        var sql = $"SELECT {select} FROM {rootMap.TableName} r WHERE {inClause}";
+
 
         var orderSql = OrderByBuilder.Build(orderBy, rootMap, desc);
         sql += " " + orderSql;
@@ -194,5 +201,10 @@ internal static class SqlBuilder
         return $"{leftExpr} IN ({string.Join(", ", names)})";
     }
     
+    internal static string BuildRootSelectList(EntityMap map, string alias)
+    {
+        return string.Join(", ", map.Properties.Select(p => $"{alias}.{p.ColumnName} AS {p.ColumnName}"));
+    }
+
     
 }
