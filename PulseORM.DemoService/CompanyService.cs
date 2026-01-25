@@ -15,6 +15,10 @@ public class CompanyService : ICompanyService
     }
     public async Task<IList<Company>> GetCompanies()
     {
+        
+        var list = await _appDb.Query<Company>()
+        .ToListSelectAsync<CompanyNameDto>();
+
         return await _appDb.GetAllAsync<Company>();
     }
 
