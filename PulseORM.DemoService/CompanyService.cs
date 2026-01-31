@@ -70,6 +70,11 @@ public class CompanyService : ICompanyService
         // return await _appDb.SqlQuery<Company>("select * from Company").ToListAsync();
     }
 
+    public async Task<int> AddCompanyAsync(Company company)
+    {
+        return await _appDb.InsertAsync(company);
+    }
+
     private async Task<long> TestSqlQueryReturnCount()
     {
         var count = await  _appDb.QueryCountSqlCoreAsync("Select Count(*) from Company", null);

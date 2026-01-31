@@ -17,7 +17,7 @@ namespace PulseORM.DemoApi.Controllers
             _companyService = companyService;
             _userService = userService;
         }
-        [HttpGet("Test")]
+        [HttpGet("All Companies")]
         public async Task<IEnumerable<Company>> Get()
         {
             return await _companyService.GetCompanies();
@@ -48,6 +48,20 @@ namespace PulseORM.DemoApi.Controllers
             if (userAdd>0)
             {
                 return user;
+            }
+            else
+            {
+                throw new Exception("UserAdd Failed");
+            }
+        }
+        
+        [HttpPost("CompanyAdd")]
+        public async Task<Company> CompanyAdd([FromBody] Company company)
+        {
+            var companyAdd = await _companyService.AddCompanyAsync(company);
+            if (companyAdd>0)
+            {
+                return company;
             }
             else
             {

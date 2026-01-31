@@ -13,4 +13,6 @@ public interface ICompanyService
     
     Task<IList<Company>> TestSqlQueryAsync();
 
+    Task<int> AddCompanyAsync(Company company);
+
 }
