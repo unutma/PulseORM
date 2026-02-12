@@ -34,11 +34,11 @@ Clone the repository and restore dependencies:
 
 ```bash
 git clone <https://github.com/unutma/PulseORM.git>
-cd PulseORM
-dotnet restore
 ```
 
 ## Quick Start
+
+dotnet add package PulseORM.Core --version 1.0.0
 
 ```csharp
 using PulseORM.Core;

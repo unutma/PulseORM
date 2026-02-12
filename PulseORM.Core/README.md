@@ -15,6 +15,8 @@ It aims to reduce the amount of bare SQL you need to write compared to Dapper, r
 
 ## Quick Example
 
+dotnet add package PulseORM.Core --version 1.0.0
+
 ```csharp
 using PulseORM.Core;
 
