@@ -32,7 +32,7 @@ It focuses on explicit SQL generation, predictable mapping, and minimal abstract
 Clone the repository and restore dependencies:
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/unutma/PulseORM.git>
 cd PulseORM
 dotnet restore
 ```
