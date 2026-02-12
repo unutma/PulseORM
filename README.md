@@ -1,10 +1,11 @@
 # PulseORM
 
-PulseORM is a lightweight, SQL-first ORM for .NET.
-It focuses on explicit SQL generation, predictable mapping, and minimal abstraction over ADO.NET.
+PulseORM is a lightweight ORM for .NET 8 and above.
+It reduces raw SQL compared to Dapper, stays far more minimal than EF Core, and is designed to deliver Dapper-level performance with predictable ADO.NET-based mapping.
 
 ## Highlights
 
+- .NET 8,9 and 10 support
 - Lightweight query API with expression-based filtering
 - CRUD operations (`Insert`, `Update`, `Delete`, `GetById`)
 - Bulk operations (`BulkInsert`, `BulkUpdate`)
@@ -135,6 +136,8 @@ dotnet build PulseORM.sln
 
 ## Notes
 
-- PulseORM is SQL-first by design and does not attempt to hide SQL behavior.
+- PulseORM focuses on writing less bare SQL than Dapper while preserving explicit query control.
+- The implementation is intentionally much more minimal than EF Core.
+- Performance goals target Dapper-like throughput and low overhead.
 - For production usage, make sure all entity keys and mappings are explicit and verified.
 
