@@ -9,13 +9,13 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 
     <PackageId>PulseORM.Core</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Muharrem Yildiz</Authors>
     <Company>PulseORM</Company>
     <Description>PulseORM.Core is a lightweight ORM for .NET 8+ that reduces bare SQL compared to Dapper, stays minimal compared to EF Core, and targets Dapper-like performance.</Description>
     <PackageTags>orm;sql;ado.net;dapper;efcore;postgresql;sqlserver;oracle</PackageTags>
 
-    <PackageProjectUrl>https://github.com/unutma/PulseORM</PackageProjectUrl>
+    <PackageProjectUrl>https://pulseorm.dev</PackageProjectUrl>
     <RepositoryUrl>https://github.com/unutma/PulseORM</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
